@@ -1,0 +1,9 @@
+.DS_Store
+*.pem
+
+.env*
+!.env.example
+
+/.tools
+/php/storage/*
+!/php/storage/.gitkeep

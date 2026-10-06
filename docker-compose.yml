@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    container_name: borc_takip_db
+    environment:
+      POSTGRES_USER: borc
+      POSTGRES_PASSWORD: borc_dev_password
+      POSTGRES_DB: borc_takip
+    ports:
+      - "5432:5432"
+    volumes:
+      - borc_takip_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U borc -d borc_takip"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  borc_takip_pg:
